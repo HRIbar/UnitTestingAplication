@@ -2,6 +2,7 @@ package com.udemy.unittesting.unittesting;
 
 import com.udemy.unittesting.unittesting.business.HelloWorldController;
 import com.udemy.unittesting.unittesting.business.ItemBusinessService;
+import com.udemy.unittesting.unittesting.business.ItemController;
 import com.udemy.unittesting.unittesting.model.Item;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(HelloWorldController.class)
+@WebMvcTest(ItemController.class)
 public class ItemControllerTest {
 
     @Autowired
@@ -33,7 +34,7 @@ public class ItemControllerTest {
     @Test
     public void itemFromBusinessService_basic() throws Exception {
 
-        when(businessService.retrieveHardcodedItem()).thenReturn(new Item(2,"Item2",10,10));
+        when(businessService.retrieveHardcodedItem()).thenReturn(new Item(1,"Ball",10,100));
 
         RequestBuilder request = MockMvcRequestBuilders
                 .get("/item-from-business-service")
@@ -46,7 +47,7 @@ public class ItemControllerTest {
                 .andReturn();
 
         //verfy Hello World
-        assertEquals("Hello World", result.getResponse().getContentAsString());
+        assertEquals("{\"id\":1,\"name\":\"Ball\",\"price\":10,\"quantity\":100}", result.getResponse().getContentAsString());
 
     }
 }
