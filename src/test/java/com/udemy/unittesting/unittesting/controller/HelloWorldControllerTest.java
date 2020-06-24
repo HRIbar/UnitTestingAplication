@@ -1,4 +1,4 @@
-package com.udemy.unittesting.unittesting;
+package com.udemy.unittesting.unittesting.controller;
 
 import com.udemy.unittesting.unittesting.business.HelloWorldController;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.udemy.unittesting.unittesting;
+package com.udemy.unittesting.unittesting.business;
 
 import com.udemy.unittesting.unittesting.business.SomeBusinessImpl;
 import com.udemy.unittesting.unittesting.data.SomeDataService;
