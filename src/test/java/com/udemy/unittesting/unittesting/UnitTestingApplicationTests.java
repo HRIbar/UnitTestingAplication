@@ -4,7 +4,11 @@ import com.udemy.unittesting.unittesting.business.SomeBusinessImpl;
 import com.udemy.unittesting.unittesting.data.SomeDataService;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
 
 class SomeDataServiceStub implements SomeDataService{
 
@@ -22,10 +26,12 @@ class SomeDataServiceStubEmpty implements SomeDataService{
 	}
 }
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
+@TestPropertySource(locations={"classpath:test-configuration.properties"})
 class UnitTestingApplicationTests {
 
-	/*
+
 	@Test
 	public void calculateSumUsingDataServiceBasic() {
 		SomeBusinessImpl business = new SomeBusinessImpl();
@@ -43,7 +49,7 @@ class UnitTestingApplicationTests {
 		int expectedResult = 0;
 		assertEquals(expectedResult, actualResult);
 	}
-	*/
+
 
 
 }
