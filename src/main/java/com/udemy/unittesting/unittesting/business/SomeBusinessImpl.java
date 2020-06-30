@@ -2,6 +2,9 @@ package com.udemy.unittesting.unittesting.business;
 
 import com.udemy.unittesting.unittesting.data.SomeDataService;
 
+import java.util.Arrays;
+import java.util.OptionalInt;
+
 public class SomeBusinessImpl {
 
     private SomeDataService someDataService;
@@ -10,6 +13,7 @@ public class SomeBusinessImpl {
         this.someDataService = someDataService;
     }
 
+    /*
     public int calculateSum(int[] data) {
     int sum = 0;
     for(int value:data) {
@@ -24,6 +28,15 @@ public class SomeBusinessImpl {
             sum += value;}
         return sum;
     }
+    */
+    public int calculateSum(int[] data) {
+        return Arrays.stream(data).reduce(Integer::sum).orElse(0);
+    }
+
+    public int calculateSumUsingDataService() {
+        return Arrays.stream(someDataService.retrieveAllData()).reduce(Integer::sum).orElse(0);
+    }
+
 
 }
 
